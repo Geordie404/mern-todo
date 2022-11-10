@@ -14,5 +14,9 @@ POST http://localhost:3001/todos/new
 Content-Type: application/json
 
 {
-    "text": "Prove to bella im smart"
+    "text": "DELETE THIS"
 }
+
+###
+
+DELETE http://localhost:3001/todo/delete/636d5127b862c11ef50389ce

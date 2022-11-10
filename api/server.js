@@ -24,14 +24,14 @@ const mongoAtlasUri =
 
 const Todo = require('./models/Todo'); // importing our model to use in the application
 
-// get request for connecting to the DB
+// GET request for connecting to the DB
 app.get('/todos', async (req, res) => {
     const todos = await Todo.find(); // find our todos using our models connected to our mongoose DB
 
     res.json(todos); // pass all the todos back to the file here
 });
 
-// post request for sending a new  singular todo
+// POST ---- request for sending a new  singular todo
 app.post('/todos/new', async (req, res) => {
     const todo = new Todo({ // build new todo request using the body of the req
         text: req.body.text
@@ -42,6 +42,11 @@ app.post('/todos/new', async (req, res) => {
     res.json(todo); // pass all the todos back to the file here
 });
 
+// DELETE using parameter in URI strig
+app.delete('/todo/delete/:id', async (req, res) => {
+    const result = await Todo.findByIdAndDelete(req.params.id);
 
+    res.json(result);
+})
       
 app.listen(3001, ()=> console.log("server started on port 3001"));
