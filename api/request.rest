@@ -1,1 +1,18 @@
 GET http://localhost:3001/todos
+
+###
+
+POST http://localhost:3001/todos/new
+Content-Type: application/json
+
+{
+    "text": "build calorie app"
+}
+###
+
+POST http://localhost:3001/todos/new
+Content-Type: application/json
+
+{
+    "text": "Prove to bella im smart"
+}
