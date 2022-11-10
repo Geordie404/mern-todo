@@ -35,7 +35,7 @@ app.get('/todos', async (req, res) => {
 });
 
 // POST ---- request for sending a new  singular todo
-app.post('/todos/new', async (req, res) => {
+app.post('/todo/new', async (req, res) => {
     const todo = new Todo({ // build new todo request using the body of the req
         text: req.body.text
     });
@@ -47,9 +47,9 @@ app.post('/todos/new', async (req, res) => {
 
 // DELETE  --- using parameter in URI strig
 app.delete('/todo/delete/:id', async (req, res) => {
-    const result = await Todo.findByIdAndDelete(req.params.id);
+	const result = await Todo.findByIdAndDelete(req.params.id);
 
-    res.json(result);
+	res.json({result});
 });
 
 // GET --- using URI string GET the id again and flip the value for complete
