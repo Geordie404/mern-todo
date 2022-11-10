@@ -1,7 +1,6 @@
 GET http://localhost:3001/todos
 
 ###
-
 POST http://localhost:3001/todos/new
 Content-Type: application/json
 
@@ -9,7 +8,6 @@ Content-Type: application/json
     "text": "build calorie app"
 }
 ###
-
 POST http://localhost:3001/todos/new
 Content-Type: application/json
 
@@ -18,7 +16,6 @@ Content-Type: application/json
 }
 
 ###
-
 DELETE http://localhost:3001/todo/delete/636d5127b862c11ef50389ce
 
 ###

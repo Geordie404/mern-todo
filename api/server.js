@@ -1,12 +1,12 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
-
 const app = express();
-
 app.use(express.json());
 app.use(cors());
 
+
+// Set up mongo atlas URI to be used with mongoose
 const mongoAtlasUri = 
     "mongodb+srv://geordie:FZIxN3h4C3pgoxbP@cluster0.canbqbb.mongodb.net/?retryWrites=true&w=majority";
 
@@ -24,7 +24,10 @@ const mongoAtlasUri =
 
 const Todo = require('./models/Todo'); // importing our model to use in the application
 
-// GET request for connecting to the DB
+
+// -------- API REQUEST BLOCK --------------
+
+// GET ---  request for connecting to the DB
 app.get('/todos', async (req, res) => {
     const todos = await Todo.find(); // find our todos using our models connected to our mongoose DB
 
@@ -42,20 +45,20 @@ app.post('/todos/new', async (req, res) => {
     res.json(todo); // pass all the todos back to the file here
 });
 
-// DELETE using parameter in URI strig
+// DELETE  --- using parameter in URI strig
 app.delete('/todo/delete/:id', async (req, res) => {
     const result = await Todo.findByIdAndDelete(req.params.id);
 
     res.json(result);
 });
 
-// PUT using URI string id again and flipping the value for complete
+// PUT --- using URI string id again and flipping the value for complete
 app.put('/todo/complete/:id', async (req, res) => {
     const todo = await Todo.findById(req.params.id);
 
     todo.complete = !todo.complete;
 
-    todo.save();
+    todo.save(); // save the todo completion status
 
     res.json(todo);
 });
