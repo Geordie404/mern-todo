@@ -21,5 +21,13 @@ const mongoAtlasUri =
       } catch (e) {
         console.log("could not connect");
       }
+
+const Todo = require('./models/Todo');
+
+app.get('/todos', async (req, res) => {
+    const todos = await Todo.find(); // find our todos using our models connected to our mongoose DB
+
+    res.json(todos); // pass all the todos back to the file here
+});
       
 app.listen(3001, ()=> console.log("server started on port 3001"));
