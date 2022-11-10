@@ -52,8 +52,8 @@ app.delete('/todo/delete/:id', async (req, res) => {
     res.json(result);
 });
 
-// PUT --- using URI string id again and flipping the value for complete
-app.put('/todo/complete/:id', async (req, res) => {
+// GET --- using URI string GET the id again and flip the value for complete
+app.get('/todo/complete/:id', async (req, res) => {
     const todo = await Todo.findById(req.params.id);
 
     todo.complete = !todo.complete;
@@ -62,5 +62,7 @@ app.put('/todo/complete/:id', async (req, res) => {
 
     res.json(todo);
 });
+
+
       
 app.listen(3001, ()=> console.log("server started on port 3001"));
